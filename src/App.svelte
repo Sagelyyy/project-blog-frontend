@@ -24,10 +24,16 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
   />
   {#if $userStore}
-    <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
-    <a href="http://localhost:8080">Go to Dashboard</a>
+    <div class="control-panel">
+      <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
+      <a href="http://localhost:8080" target="_blank" rel="noreferrer"
+        >Go to Dashboard</a
+      >
+    </div>
   {:else}
-    <Login />
+    <div class="control-panel">
+      <Login />
+    </div>
   {/if}
   <Blog />
 </main>
@@ -50,6 +56,7 @@
 
   :global(body) {
     background-color: var(--primary-bg);
+    padding: 0;
   }
 
   :global(.error) {
@@ -58,5 +65,21 @@
 
   :global(.capitalize) {
     text-transform: capitalize;
+  }
+
+  :global(.separator) {
+    margin-top: 10px;
+    border: 1px solid #c3c3c3;
+  }
+
+  h1 {
+    text-transform: capitalize;
+  }
+
+  .control-panel {
+    text-align: center;
+    background-color: var(--accent);
+    padding: 0;
+    border-bottom: 3px solid var(--darker-hlight);
   }
 </style>

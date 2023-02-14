@@ -2,17 +2,20 @@
   import { userStore } from "./store";
   import Comments from "./Comments.svelte";
   import { tick } from "svelte";
+  import CommentForm from "./Comment-Form.svelte";
 
   let showComments = false;
 
+  let form;
   let comments;
 
   async function commentHandler(id) {
-    showComments == true ? (showComments = false) : (showComments = true);
+    showComments = !showComments;
     // Need to wait for the component to be visible to bind comments for setComments method
     if (showComments) {
       await tick;
       comments.setComments(id);
+      form.updateBlog(id);
     }
   }
 
@@ -57,6 +60,9 @@
 </script>
 
 <div class="content-wrapper">
+  {#if showComments}
+    <CommentForm bind:this={form} />
+  {/if}
   <div class="content">
     {#await blogs}
       ...loading
@@ -109,8 +115,10 @@
 <style>
   .content-wrapper {
     display: grid;
-    grid-template-columns: 615px 310px;
+    grid-template-columns: 430px 615px 330px;
     justify-content: center;
+    margin-top: 20px;
+    grid-auto-rows: min-content;
   }
 
   .content {
@@ -168,11 +176,6 @@
     color: var(--dark);
   }
 
-  .separator {
-    margin-top: 10px;
-    border: 1px solid #c3c3c3;
-  }
-
   .footer {
     display: flex;
     justify-content: space-around;
@@ -210,6 +213,6 @@
   }
 
   .comment-container {
-    width: 300px;
+    width: fit-content;
   }
 </style>
