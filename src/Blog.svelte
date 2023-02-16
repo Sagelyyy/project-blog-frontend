@@ -9,7 +9,7 @@
   let form;
   let comments;
 
-  async function commentHandler(id) {
+  async function modalHandler(id) {
     showComments = !showComments;
     // Need to wait for the component to be visible to bind comments for setComments method
     if (showComments) {
@@ -17,6 +17,7 @@
       comments.setComments(id);
       form.updateBlog(id);
     }
+    console.log(id);
   }
 
   async function getBlogs() {
@@ -60,9 +61,12 @@
 </script>
 
 <div class="content-wrapper">
-  {#if showComments}
-    <CommentForm bind:this={form} />
-  {/if}
+  <div class="form-filler">
+    {#if showComments}
+      <CommentForm bind:this={form} />
+    {/if}
+  </div>
+
   <div class="content">
     {#await blogs}
       ...loading
@@ -80,7 +84,7 @@
             <p>{item.text}</p>
             <div class="footer">
               <p>Posted at {item.date}</p>
-              <button on:click={() => commentHandler(item._id)}
+              <button on:click={() => modalHandler(item._id)}
                 ><span class="material-symbols-outlined comment-wrapper">
                   forum <p>
                     {item.comments.length > 0 ? item.comments.length : ""}
@@ -107,7 +111,7 @@
   </div>
   {#if showComments}
     <div class="comment-container">
-      <Comments on:close={() => commentHandler()} bind:this={comments} />
+      <Comments on:close={() => modalHandler()} bind:this={comments} />
     </div>
   {/if}
 </div>
@@ -115,11 +119,31 @@
 <style>
   .content-wrapper {
     display: grid;
-    grid-template-columns: 430px 615px 330px;
+    grid-template-columns: 315px 605px 300px;
     justify-content: center;
     margin-top: 20px;
     grid-auto-rows: min-content;
+    gap: 10px;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .content-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .content-wrapper {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* .content-wrapper {
+    display: flex;
+  } */
 
   .content {
     display: grid;

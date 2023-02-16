@@ -89,11 +89,21 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 700px;
+    height: 738px;
     background-color: white;
     padding: 10px;
     overflow-y: auto;
-    overflow-x: hidden;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .comment-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .comment-wrapper {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .comment-wrapper > h3 {

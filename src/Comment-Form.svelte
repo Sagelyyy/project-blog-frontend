@@ -61,10 +61,9 @@
 
 <style>
   .form-wrapper {
-    position: relative;
+    position: fixed;
     padding-top: 10px;
-    width: 400px;
-    margin: 0 auto;
+    width: 300px;
     background-color: white;
     padding: 10px;
   }
