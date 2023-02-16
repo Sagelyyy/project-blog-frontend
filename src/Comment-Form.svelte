@@ -46,12 +46,14 @@
   <h3>Leave a comment</h3>
   <p class="error">{postError}</p>
   <form>
-    <input
-      bind:value={commentUser}
-      type="text"
-      name="pubName"
-      placeholder="Username"
-    />
+    {#if !$userStore}
+      <input
+        bind:value={commentUser}
+        type="text"
+        name="pubName"
+        placeholder="Username"
+      />
+    {/if}
     <textarea required bind:value={commentText} name="text" />
     <button on:click|preventDefault={() => handlePost(currentBlog)}
       >Submit</button

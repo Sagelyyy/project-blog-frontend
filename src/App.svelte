@@ -2,6 +2,7 @@
   import { userStore } from "./store";
   import Login from "./Login.svelte";
   import Blog from "./Blog.svelte";
+  import Navigation from "./Navigation.svelte";
 </script>
 
 <main>
@@ -23,18 +24,7 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
   />
-  {#if $userStore}
-    <div class="control-panel">
-      <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
-      <a href="http://localhost:8080" target="_blank" rel="noreferrer"
-        >Go to Dashboard</a
-      >
-    </div>
-  {:else}
-    <div class="control-panel">
-      <Login />
-    </div>
-  {/if}
+  <Navigation />
   <Blog />
 </main>
 
@@ -70,16 +60,5 @@
   :global(.separator) {
     margin-top: 10px;
     border: 1px solid #c3c3c3;
-  }
-
-  h1 {
-    text-transform: capitalize;
-  }
-
-  .control-panel {
-    text-align: center;
-    background-color: var(--accent);
-    padding: 0;
-    border-bottom: 3px solid var(--darker-hlight);
   }
 </style>

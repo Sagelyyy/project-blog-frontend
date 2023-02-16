@@ -118,8 +118,9 @@
 
 <style>
   .content-wrapper {
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 315px 605px 300px;
+    grid-template-columns: 315px minmax(350px, 605px) 300px;
     justify-content: center;
     margin-top: 20px;
     grid-auto-rows: min-content;
@@ -128,6 +129,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    margin-right: 10px;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -141,13 +143,9 @@
     scrollbar-width: none; /* Firefox */
   }
 
-  /* .content-wrapper {
-    display: flex;
-  } */
-
   .content {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(250px, 605px);
     gap: 10px;
     width: fit-content;
   }
@@ -156,7 +154,7 @@
     font-family: "Roboto", sans-serif;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    width: 600px;
+    max-width: 605px;
     background-color: var(--accent);
     transition: all 0.5s;
   }

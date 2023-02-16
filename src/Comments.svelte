@@ -85,7 +85,7 @@
 
 <style>
   .comment-wrapper {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     width: 300px;
