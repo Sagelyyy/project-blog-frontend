@@ -15,14 +15,17 @@
 
   export async function getBlog(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
-        method: "GET",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        `https://project-blog-production.up.railway.app/api/blogs/${id}`,
+        {
+          method: "GET",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (res.ok) {
         const comments = await res.json();
         return comments;
@@ -34,17 +37,20 @@
 
   async function handleDelete(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
-        method: "DELETE",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id,
-        }),
-      });
+      const res = await fetch(
+        `https://project-blog-production.up.railway.app/api/blogs/${id}`,
+        {
+          method: "DELETE",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id,
+          }),
+        }
+      );
     } catch (err) {
       console.log(err);
     } finally {
@@ -82,7 +88,10 @@
               </span></button
             >
             {#if $userStore !== null && $userStore.user.admin}
-              <form method="POST" action="http://localhost:3000/api/blogs">
+              <form
+                method="POST"
+                action="https://project-blog-production.up.railway.app/api/blogs"
+              >
                 <input name="id" value={data.blog._id} hidden required />
                 <button
                   on:click|preventDefault={() => handleDelete(data.blog._id)}

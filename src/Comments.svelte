@@ -18,7 +18,7 @@
   export async function getBlogComments(id) {
     try {
       const res = await fetch(
-        `http://localhost:3000/api/blogs/${id}/comments`,
+        `https://project-blog-production.up.railway.app/api/blogs/${id}/comments`,
         {
           method: "GET",
           withCredentials: true,
@@ -40,17 +40,20 @@
   // TODO: Handle comment deletion
   async function handleDelete(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/comments/${id}`, {
-        method: "DELETE",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id,
-        }),
-      });
+      const res = await fetch(
+        `https://project-blog-production.up.railway.app/api/comments/${id}`,
+        {
+          method: "DELETE",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id,
+          }),
+        }
+      );
     } catch (err) {
       console.log(err);
     }

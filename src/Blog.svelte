@@ -5,14 +5,17 @@
 
   async function getBlogs() {
     try {
-      const res = await fetch("http://localhost:3000/api/blogs", {
-        method: "GET",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await fetch(
+        "https://project-blog-production.up.railway.app/api/blogs",
+        {
+          method: "GET",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (res.ok) {
         const blogs = await res.json();
         return blogs;
@@ -26,17 +29,20 @@
 
   async function handleDelete(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
-        method: "DELETE",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id,
-        }),
-      });
+      const res = await fetch(
+        `https://project-blog-production.up.railway.app/api/blogs/${id}`,
+        {
+          method: "DELETE",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id,
+          }),
+        }
+      );
     } catch (err) {
       console.log(err);
     } finally {
@@ -73,7 +79,10 @@
                 >
               </div>
               {#if $userStore !== null && $userStore.user.admin}
-                <form method="POST" action="http://localhost:3000/api/blogs">
+                <form
+                  method="POST"
+                  action="https://project-blog-production.up.railway.app/api/blogs"
+                >
                   <input name="id" value={item._id} hidden required />
                   <button
                     on:click|preventDefault={() => handleDelete(item._id)}

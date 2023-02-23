@@ -14,19 +14,22 @@
   async function handlePost(id) {
     if (commentText !== "") {
       console.log(currentBlog);
-      fetch(`http://localhost:3000/api/blogs/${id}/comments`, {
-        method: "POST",
-        withCredentials: true,
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          text: commentText,
-          public_username: commentUser == "" ? "Anonymous" : commentUser,
-          user: $userStore ? $userStore.user.id : null,
-        }),
-      })
+      fetch(
+        `https://project-blog-production.up.railway.app/api/blogs/${id}/comments`,
+        {
+          method: "POST",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: commentText,
+            public_username: commentUser == "" ? "Anonymous" : commentUser,
+            user: $userStore ? $userStore.user.id : null,
+          }),
+        }
+      )
         .then((res) => {
           commentText = "";
           commentUser = "";
