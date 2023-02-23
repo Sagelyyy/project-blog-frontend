@@ -41,8 +41,6 @@
       }
     } catch (e) {
       console.log(e);
-    } finally {
-      location.reload();
     }
   }
 </script>
