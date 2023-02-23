@@ -18,14 +18,6 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
   />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-  />
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-  />
 </main>
 <Navigation />
 <Router {url}>
@@ -67,5 +59,108 @@
   :global(.separator) {
     margin-top: 10px;
     border: 1px solid #c3c3c3;
+  }
+
+  :global(.card .roll > h2) {
+    text-shadow: none;
+    transition: text-shadow 0.3s ease-in-out;
+  }
+
+  :global(.card:hover .roll > h2) {
+    text-shadow: -5px 5px 5px var(--dark);
+  }
+
+  :global(.card) {
+    padding: 5px;
+    font-family: "Roboto", sans-serif;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 605px;
+    background-color: var(--accent);
+    transition: all 0.5s ease;
+  }
+
+  :global(.card:hover) {
+    cursor: pointer;
+    box-shadow: -10px 10px 20px black;
+  }
+
+  :global(.roll) {
+    text-align: center;
+    text-shadow: none;
+  }
+
+  :global(.roll > h2) {
+    font-size: 8rem;
+  }
+
+  :global(.roll > h3 span) {
+    text-transform: capitalize;
+  }
+  :global(.post) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(.post > h2) {
+    align-self: flex-end;
+    margin-right: 5px;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 0.9rem;
+    padding-top: 12px;
+    background-color: #9ecaff;
+    height: 30px;
+    width: 50px;
+    border-radius: 20px;
+  }
+
+  :global(.post > p) {
+    color: var(--dark);
+  }
+
+  :global(.footer) {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.8rem;
+    margin-top: auto;
+    padding-top: 10px;
+    gap: 5px;
+  }
+
+  :global(.trash) {
+    padding: 2px;
+    color: var(--dark);
+    transition: all 0.5s;
+    border-radius: 5px;
+  }
+
+  :global(.trash:hover) {
+    scale: 1.2;
+    background-color: var(--error);
+  }
+
+  :global(button) {
+    cursor: pointer;
+  }
+
+  :global(.comment-btn) {
+    display: flex;
+    gap: 5px;
+    transition: all 0.5s;
+    border-radius: 5px;
+  }
+
+  :global(.comment-btn:hover) {
+    scale: 1.2;
+    background-color: rgb(160, 224, 160);
+  }
+
+  :global(.comment-container) {
+    max-width: 600px;
+  }
+
+  :global(.material-symbols-outlined) {
+    display: flex !important;
   }
 </style>

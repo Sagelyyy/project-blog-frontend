@@ -33,6 +33,8 @@
   }
 
   .control-panel {
+    top: 0;
+    position: sticky;
     width: 100%;
     text-align: center;
     background-color: var(--accent);

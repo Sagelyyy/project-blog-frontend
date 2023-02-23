@@ -63,7 +63,7 @@
   <div
     out:blur={{ duration: 400 }}
     in:blur={{ duration: 350 }}
-    class="comment-wrapper"
+    class="comments"
   >
     <h3>Comments</h3>
     <div class="separator" />
@@ -84,48 +84,13 @@
 {/if}
 
 <style>
-  .comment-wrapper {
+  .comments {
     display: flex;
     flex-direction: column;
-    max-width: 595px;
+    max-width: 600px;
     height: 45vh;
     background-color: var(--accent);
     padding: 10px;
     overflow-y: auto;
-  }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .comment-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .comment-wrapper {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  .comment-wrapper > h3 {
-    text-transform: capitalize;
-  }
-
-  .btn-close {
-    width: fit-content;
-    align-self: flex-end;
-    margin: 5px;
-  }
-
-  .close {
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 2px;
-    color: var(--dark);
-    border-radius: 5px;
-    transition: all 0.5s;
-  }
-
-  .close:hover {
-    scale: 1.2;
-    background-color: var(--error);
   }
 </style>
