@@ -6,6 +6,7 @@
 
   let comments;
   let currentBlog;
+  export let id;
 
   export function setComments(id) {
     currentBlog = id;
@@ -54,6 +55,8 @@
       console.log(err);
     }
   }
+
+  setComments(id);
 </script>
 
 {#if comments}
@@ -62,9 +65,6 @@
     in:blur={{ duration: 350 }}
     class="comment-wrapper"
   >
-    <button class="btn-close" on:click={() => dispatch("close")}>
-      <span class="material-symbols-outlined close"> cancel </span>
-    </button>
     <h3>Comments</h3>
     <div class="separator" />
     {#await comments}
@@ -85,12 +85,11 @@
 
 <style>
   .comment-wrapper {
-    position: fixed;
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 738px;
-    background-color: white;
+    max-width: 595px;
+    height: 45vh;
+    background-color: var(--accent);
     padding: 10px;
     overflow-y: auto;
   }

@@ -1,11 +1,21 @@
 <script>
   import { userStore } from "./store";
+  import Comments from "./Comments.svelte";
+  import CommentForm from "./Comment-Form.svelte";
 
-  import { link } from "svelte-routing";
+  let blog;
 
-  async function getBlogs() {
+  export let id;
+
+  export function setBlog(id) {
+    getBlog(id).then((data) => {
+      blog = data;
+    });
+  }
+
+  export async function getBlog(id) {
     try {
-      const res = await fetch("http://localhost:3000/api/blogs", {
+      const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
         method: "GET",
         withCredentials: true,
         credentials: "include",
@@ -14,15 +24,13 @@
         },
       });
       if (res.ok) {
-        const blogs = await res.json();
-        return blogs;
+        const comments = await res.json();
+        return comments;
       }
     } catch (err) {
       console.log(err);
     }
   }
-
-  let blogs = getBlogs();
 
   async function handleDelete(id) {
     try {
@@ -41,79 +49,69 @@
       console.log(err);
     }
   }
+
+  setBlog(id);
 </script>
 
 <div class="content">
-  {#await blogs}
-    ...loading
-  {:then data}
-    {#each data.blogs as item}
-      <a href={`/blog/${item._id}`} use:link>
-        <div class="card">
-          <div class="roll">
-            <h3><span>{item.user.username}</span> rolled a</h3>
-            <h2>{item.number}</h2>
-          </div>
-          <div class="post">
-            <h1>{item.title}</h1>
-            <h2>{item.user.username}</h2>
-            <div class="separator" />
-            <p>{item.text}</p>
-            <div class="footer">
-              <p>Posted at {item.date}</p>
-              <button on:click={() => modalHandler(item._id)}
-                ><span class="material-symbols-outlined comment-wrapper">
-                  forum <p>
-                    {item.comments.length > 0 ? item.comments.length : ""}
-                  </p>
-                </span></button
-              >
-              {#if $userStore !== null && $userStore.user.admin}
-                <form method="POST" action="http://localhost:3000/api/blogs">
-                  <input name="id" value={item._id} hidden required />
-                  <button
-                    on:click|preventDefault={() => handleDelete(item._id)}
-                  >
-                    <span class="material-symbols-outlined trash">
-                      delete
-                    </span>
-                  </button>
-                </form>
-              {/if}
-            </div>
+  {#if blog}
+    {#await blog}
+      ....Loading
+    {:then data}
+      <div class="card">
+        <div class="roll">
+          <h3><span>{data.blog.user.username}</span> rolled a</h3>
+          <h2>{data.blog.number}</h2>
+        </div>
+        <div class="post">
+          <h1>{data.blog.title}</h1>
+          <h2>{data.blog.user.username}</h2>
+          <div class="separator" />
+          <p>{data.blog.text}</p>
+          <div class="footer">
+            <p>Posted at {data.blog.date}</p>
+            <button
+              ><span class="material-symbols-outlined comment-wrapper">
+                forum <p>
+                  {data.blog.comments.length > 0
+                    ? data.blog.comments.length
+                    : ""}
+                </p>
+              </span></button
+            >
+            {#if $userStore !== null && $userStore.user.admin}
+              <form method="POST" action="http://localhost:3000/api/blogs">
+                <input name="id" value={data.blog._id} hidden required />
+                <button
+                  on:click|preventDefault={() => handleDelete(data.blog._id)}
+                >
+                  <span class="material-symbols-outlined trash"> delete </span>
+                </button>
+              </form>
+            {/if}
           </div>
         </div>
-      </a>
-    {/each}
-  {/await}
+      </div>
+    {/await}
+  {/if}
+
+  <div class="comment-container">
+    <Comments {id} />
+  </div>
+
+  <CommentForm {id} />
 </div>
 
 <style>
-  a:link,
-  a:visited {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-  }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .content-wrapper::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .content-wrapper {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
   .content {
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 10px;
+    flex-direction: column;
     width: fit-content;
+    padding: 10px;
   }
   .card {
     padding: 5px;
@@ -198,5 +196,9 @@
   .comment-wrapper:hover {
     scale: 1.2;
     background-color: rgb(160, 224, 160);
+  }
+
+  .comment-container {
+    max-width: 595px;
   }
 </style>

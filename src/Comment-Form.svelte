@@ -5,6 +5,7 @@
   let commentUser = "";
   let postError = "";
   let currentBlog;
+  export let id;
 
   export function updateBlog(id) {
     currentBlog = id;
@@ -32,6 +33,7 @@
         })
         .catch((e) => console.log(e));
       postError = "";
+      location.reload();
     } else {
       postError = "Please enter a comment";
     }
@@ -55,19 +57,18 @@
       />
     {/if}
     <textarea required bind:value={commentText} name="text" />
-    <button on:click|preventDefault={() => handlePost(currentBlog)}
-      >Submit</button
-    >
+    <button on:click|preventDefault={() => handlePost(id)}>Submit</button>
   </form>
 </div>
 
 <style>
   .form-wrapper {
-    position: fixed;
     padding-top: 10px;
-    width: 300px;
-    background-color: white;
+    max-width: 595px;
+    background-color: var(--accent);
     padding: 10px;
+    position: sticky;
+    bottom: 0;
   }
 
   .form-wrapper > form {

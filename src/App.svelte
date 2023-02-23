@@ -1,8 +1,10 @@
 <script>
-  import { userStore } from "./store";
-  import Login from "./Login.svelte";
+  import { Router, Link, Route } from "svelte-routing";
   import Blog from "./Blog.svelte";
   import Navigation from "./Navigation.svelte";
+  import PostDetail from "./Post_Detail.svelte";
+
+  export let url = "";
 </script>
 
 <main>
@@ -24,9 +26,14 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
   />
-  <Navigation />
-  <Blog />
 </main>
+<Navigation />
+<Router {url}>
+  <div>
+    <Route path="blog/:id" let:params><PostDetail id={params.id} /></Route>
+    <Route path="/" component={Blog} />
+  </div>
+</Router>
 
 <style>
   :global(*) {
