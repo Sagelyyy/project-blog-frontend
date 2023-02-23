@@ -7,8 +7,10 @@
 {#if $userStore}
   <div class="control-panel">
     <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
-    <a href="http://localhost:8080" target="_blank" rel="noreferrer"
-      >Go to Dashboard</a
+    <a
+      href="https://silver-pony-75526a.netlify.app"
+      target="_blank"
+      rel="noreferrer">Go to Dashboard</a
     >
     <div use:links>
       <Router>
