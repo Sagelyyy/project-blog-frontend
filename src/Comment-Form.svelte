@@ -12,33 +12,37 @@
   }
 
   async function handlePost(id) {
-    if (commentText !== "") {
-      console.log(currentBlog);
-      fetch(
-        `https://project-blog-production.up.railway.app/api/blogs/${id}/comments`,
-        {
-          method: "POST",
-          withCredentials: true,
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            text: commentText,
-            public_username: commentUser == "" ? "Anonymous" : commentUser,
-            user: $userStore ? $userStore.user.id : null,
-          }),
-        }
-      )
-        .then((res) => {
-          commentText = "";
-          commentUser = "";
-        })
-        .catch((e) => console.log(e));
-      postError = "";
+    try {
+      if (commentText !== "") {
+        fetch(
+          `https://project-blog-production.up.railway.app/api/blogs/${id}/comments`,
+          {
+            method: "POST",
+            withCredentials: true,
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              text: commentText,
+              public_username: commentUser == "" ? "Anonymous" : commentUser,
+              user: $userStore ? $userStore.user.id : null,
+            }),
+          }
+        )
+          .then((res) => {
+            commentText = "";
+            commentUser = "";
+          })
+          .catch((e) => console.log(e));
+        postError = "";
+      } else {
+        postError = "Please enter a comment";
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
       location.reload();
-    } else {
-      postError = "Please enter a comment";
     }
   }
 </script>
