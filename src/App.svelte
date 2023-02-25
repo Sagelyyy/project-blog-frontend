@@ -54,6 +54,15 @@
     opacity: 0.2;
   }
 
+  @media screen and (max-width: 800px) {
+    .svg-bg {
+      scale: 0.4;
+      top: 10%;
+      right: 90%;
+      left: -80%;
+    }
+  }
+
   :global(*) {
     padding: 0;
     margin: 0;
