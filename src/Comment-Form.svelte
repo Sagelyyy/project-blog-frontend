@@ -48,7 +48,7 @@
   class="form-wrapper"
 >
   <h3>Leave a comment</h3>
-  <Error {errors} />
+  <Error errors = {errors} />
   <form>
     {#if !$userStore}
       <input
