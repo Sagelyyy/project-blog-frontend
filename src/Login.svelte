@@ -1,8 +1,9 @@
 <script>
+  import { each } from "svelte/internal";
   import { userStore } from "./store";
   let email = "";
   let password = "";
-  let error = ""
+  let errors = ""
 
   async function handleLogin() {
     try {
@@ -25,7 +26,7 @@
       if(res.status == 200){
       userStore.set(data);
       }else{
-        error = data.message
+        errors = data.message
       }
     } catch (err) {
       console.log(err);
@@ -34,9 +35,9 @@
 </script>
 
 <h1>Login:</h1>
-{#if error}
-  <h2 class="error">{error.message}</h2>
-{/if}
+{#each errors.message as error}
+  <h2>{error.message}</h2>
+{/each}
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"
