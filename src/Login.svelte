@@ -40,7 +40,6 @@
   <h2 class="error">{error}</h2>
   {/each}
 {/if}
-
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"
