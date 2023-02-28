@@ -37,7 +37,7 @@
 <h1>Login:</h1>
 {#if errors}
   {#each errors as error}
-  <h2 class="error">{error}</h2>
+  <h2 class="error">{error.msg}</h2>
   {/each}
 {/if}
 <form
