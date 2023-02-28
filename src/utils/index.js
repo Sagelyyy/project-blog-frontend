@@ -1,4 +1,6 @@
-export async function handleLogin() {
+import { userStore } from "./store";
+
+export async function handleLogin(email, password) {
     try {
       const res = await fetch(
         "https://project-blog-production.up.railway.app/api/users",
@@ -19,7 +21,7 @@ export async function handleLogin() {
       if(res.status == 200){
       userStore.set(data);
       }else{
-        error = data.message
+        return data.message
       }
     } catch (err) {
       console.log(err);
