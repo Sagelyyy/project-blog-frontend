@@ -35,7 +35,7 @@
 </script>
 
 <h1>Login:</h1>
-<Error {errors}/>
+<Error errors = {errors}/>
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"

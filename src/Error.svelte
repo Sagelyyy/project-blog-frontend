@@ -1,5 +1,5 @@
 <script>
-    let errors
+    export let errors
 </script>
 
 {#if errors}
