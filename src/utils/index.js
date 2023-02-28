@@ -1,4 +1,4 @@
-import { userStore } from "./store";
+import { userStore } from "../store";
 
 export async function handleLogin(email, password) {
     try {
