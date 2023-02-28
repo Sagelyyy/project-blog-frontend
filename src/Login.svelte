@@ -2,6 +2,7 @@
   import { userStore } from "./store";
   let email = "";
   let password = "";
+  let error = ""
 
   async function handleLogin() {
     try {
@@ -21,7 +22,11 @@
         }
       );
       let data = await res.json();
+      if(res.status == 200){
       userStore.set(data);
+      }else{
+        error = data.message
+      }
     } catch (err) {
       console.log(err);
     }
@@ -29,6 +34,9 @@
 </script>
 
 <h1>Login:</h1>
+{#if error}
+  <h2 class="error">{error}</h2>
+{/if}
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"

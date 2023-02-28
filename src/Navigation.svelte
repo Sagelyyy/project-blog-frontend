@@ -8,7 +8,7 @@
   <div class="control-panel">
     <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
     <a
-      href="https://silver-pony-75526a.netlify.app"
+      href="https://chriscancodecms.up.railway.app/"
       target="_blank"
       rel="noreferrer">Go to Dashboard</a
     >
