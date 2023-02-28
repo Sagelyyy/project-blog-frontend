@@ -1,9 +1,10 @@
 <script>
   import { userStore } from "./store";
   import { blur } from "svelte/transition";
+  import Error from "./Error.svelte";
   let commentText = "";
   let commentUser = "";
-  let postError = "";
+  let errors = "";
   let currentBlog;
   export let id;
 
@@ -13,8 +14,7 @@
 
   async function handlePost(id) {
     try {
-      if (commentText !== "") {
-        fetch(
+        const res = await fetch(
           `https://project-blog-production.up.railway.app/api/blogs/${id}/comments`,
           {
             method: "POST",
@@ -30,15 +30,12 @@
             }),
           }
         )
-          .then((res) => {
-            commentText = "";
-            commentUser = "";
-          })
-          .catch((e) => console.log(e));
-        postError = "";
-      } else {
-        postError = "Please enter a comment";
-      }
+        let data = await res.json()
+        if(res.status == 200){
+          location.assign(`https://chriscancode.up.railway.app/blog/${id}`)
+        }else{
+          errors = data.message
+        }
     } catch (e) {
       console.log(e);
     }
@@ -51,7 +48,7 @@
   class="form-wrapper"
 >
   <h3>Leave a comment</h3>
-  <p class="error">{postError}</p>
+  <Error {errors} />
   <form>
     {#if !$userStore}
       <input

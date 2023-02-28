@@ -1,6 +1,6 @@
 <script>
   import Error from "./Error.svelte";
-import { userStore } from "./store";
+  import { userStore } from "./store";
   let email = "";
   let password = "";
   let errors = ""
