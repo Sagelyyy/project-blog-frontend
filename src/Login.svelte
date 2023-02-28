@@ -4,7 +4,6 @@
   let email = "";
   let password = "";
   let error = ""
-  let loginData
 
 
 </script>
@@ -19,5 +18,5 @@
 >
   <input type="text" name="email" bind:value={email} />
   <input type="password" name="password" bind:value={password} />
-  <button on:click|preventDefault={() => handleLogin(email, password).then((data) => loginData = data)}>Submit</button>
+  <button on:click|preventDefault={() => handleLogin(email, password)}>Submit</button>
 </form>
