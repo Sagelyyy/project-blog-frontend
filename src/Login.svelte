@@ -1,6 +1,6 @@
 <script>
-  import { each } from "svelte/internal";
-  import { userStore } from "./store";
+  import Error from "./Error.svelte";
+import { userStore } from "./store";
   let email = "";
   let password = "";
   let errors = ""
@@ -35,11 +35,7 @@
 </script>
 
 <h1>Login:</h1>
-{#if errors}
-  {#each errors as error}
-  <h2 class="error">{error.msg}</h2>
-  {/each}
-{/if}
+<Error {errors}/>
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"
