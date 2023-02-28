@@ -35,7 +35,7 @@
 
 <h1>Login:</h1>
 {#if error}
-  <h2 class="error">{error}</h2>
+  <h2 class="error">{error.message}</h2>
 {/if}
 <form
   method="POST"
