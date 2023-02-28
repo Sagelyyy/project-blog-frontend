@@ -35,9 +35,12 @@
 </script>
 
 <h1>Login:</h1>
-{#each errors.message as error}
-  <h2>{error.message}</h2>
-{/each}
+{#if errors}
+  {#each errors as error}
+  <h2 class="error">{error}</h2>
+  {/each}
+{/if}
+
 <form
   method="POST"
   action="https://project-blog-production.up.railway.app/api/users"
