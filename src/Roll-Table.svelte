@@ -1,7 +1,9 @@
 <script>
     import { fade } from "svelte/transition";
+    export let rollModal
 </script>
 
+{#if rollModal}
 <div transition:fade class="container">
     <h3 class="text-basic">Decision making table:</h3>
     <ul>
@@ -16,11 +18,16 @@
       <li>20: Do what you want to do.</li>
     </ul>
   </div>
+{/if}
+
 
   <style>
     .container{
         position: fixed;
-        top: 2rem;
+        top: 8rem;
         right: 2rem;
+        background-color: var(--accent);
+        padding: 20px;
+        border-radius: 10px;
     }
   </style>

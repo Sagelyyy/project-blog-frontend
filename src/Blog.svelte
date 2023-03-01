@@ -102,7 +102,7 @@
   {/await}
 </div>
 
-<RollTable />
+<RollTable rollModal={true}/>
 
 <style>
   a:link,
