@@ -61,6 +61,10 @@
       right: 90%;
       left: -80%;
     }
+
+    :global(.card){
+      grid-template-rows: 177px 1fr;
+    }
   }
 
   :global(*) {
