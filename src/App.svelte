@@ -64,6 +64,7 @@
 
     :global(.card){
       grid-template-rows: 177px 1fr;
+      grid-template-columns: none !important;
     }
   }
 
