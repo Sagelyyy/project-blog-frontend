@@ -22,6 +22,12 @@
 
 
   <style>
+
+@media screen and (max-width: 800px) {
+    .container{
+        display: none;
+    }
+}
     .container{
         position: fixed;
         top: 8rem;
