@@ -32,7 +32,7 @@
         )
         let data = await res.json()
         if(res.status == 200){
-          location.assign(`https://chriscancode.up.railway.app/blog/${id}`)
+          location.assign(`https://chriscancode.up.railway.app/`)
         }else{
           errors = data.message
         }

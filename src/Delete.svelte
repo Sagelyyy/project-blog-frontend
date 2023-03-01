@@ -5,7 +5,6 @@
       export let itemID
       export let blogID
 
-        // TODO: Handle comment deletion
   async function handleDelete(id, routeID) {
     try {
       const res = await fetch(
