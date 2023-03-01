@@ -75,7 +75,7 @@
           <h1>{data.blog.title}</h1>
           <h2>{data.blog.user.username}</h2>
           <div class="separator" />
-          <p>{data.blog.text}</p>
+          <p>{@html data.blog.text}</p>
           <div class="footer">
             <p>Posted at {data.blog.date}</p>
             <button
