@@ -55,8 +55,10 @@
         {:else}
           <h3>{item.public_username}</h3>
         {/if}
-        <p>{item.text}</p>
-        <Delete itemID={item._id} routeID={"comments"}/>
+        <div class="text-container">
+          <p>{item.text}</p>
+          <Delete itemID={item._id} routeID={"comments"}/>
+        </div>
         <div class="separator" />
       {/each}
     {/await}
@@ -72,5 +74,14 @@
     background-color: var(--accent);
     padding: 10px;
     overflow-y: auto;
+  }
+
+  .text-container{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .text-container:nth-child(2){
+    align-self: flex-end;
   }
 </style>

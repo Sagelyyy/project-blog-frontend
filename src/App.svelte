@@ -173,8 +173,6 @@
     color: var(--dark);
     transition: all 0.5s;
     border-radius: 5px;
-    width: 40px;
-    height: 40px;
   }
 
   :global(.trash:hover) {

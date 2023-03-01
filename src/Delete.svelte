@@ -38,3 +38,10 @@
     </span>
   </button>
 {/if}
+
+<style>
+  button{
+    width: 40px;
+    height: 40px;
+  }
+</style>
