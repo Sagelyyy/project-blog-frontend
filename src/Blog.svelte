@@ -122,7 +122,7 @@
 
   .footer > div > button,
   form > button{
-    width: 40px;
+    width: fit-content;
     height: 40px;
   }
 </style>

@@ -56,8 +56,8 @@
           <h3>{item.public_username}</h3>
         {/if}
         <p>{item.text}</p>
-        <div class="separator" />
         <Delete itemID={item._id} routeID={"comments"}/>
+        <div class="separator" />
       {/each}
     {/await}
   </div>
