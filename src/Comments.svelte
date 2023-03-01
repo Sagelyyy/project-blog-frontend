@@ -51,9 +51,9 @@
     {:then data}
       {#each data.result.comments as item}
         {#if item.user}
-          <h3>{item.user.username}</h3>
+          <h3 class="capitalize">{item.user.username}</h3>
         {:else}
-          <h3>{item.public_username}</h3>
+          <h3 class="capitalize">{item.public_username}</h3>
         {/if}
         <div class="text-container">
           <p>{item.text}</p>
