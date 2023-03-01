@@ -109,7 +109,7 @@
     padding: 5px;
     font-family: "Roboto", sans-serif;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 177px 1fr;
     max-width: 605px;
     background-color: var(--accent);
     transition: all 0.5s ease;

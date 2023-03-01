@@ -119,4 +119,10 @@
     max-width: 600px;
     padding: 10px;
   }
+
+  .footer > div > button,
+  form > button{
+    width: 40px;
+    height: 40px;
+  }
 </style>
