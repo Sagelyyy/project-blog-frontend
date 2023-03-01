@@ -57,7 +57,7 @@
         {/if}
         <div class="text-container">
           <p>{item.text}</p>
-          <Delete itemID={item._id} routeID={"comments"}/>
+          <Delete itemID={item._id} routeID={"comments"} blogID={id}/>
         </div>
         <div class="separator" />
       {/each}

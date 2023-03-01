@@ -3,6 +3,7 @@
 
       export let routeID
       export let itemID
+      export let blogID
 
         // TODO: Handle comment deletion
   async function handleDelete(id, routeID) {
@@ -18,6 +19,7 @@
           },
           body: JSON.stringify({
             id,
+            blog: blogID
           }),
         }
       );
