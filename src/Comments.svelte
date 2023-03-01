@@ -79,9 +79,7 @@
   .text-container{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
 
-  .text-container:nth-child(2){
-    align-self: flex-end;
-  }
 </style>

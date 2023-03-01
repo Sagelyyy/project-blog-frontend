@@ -6,7 +6,7 @@
 
 {#if $userStore}
   <div class="control-panel">
-    <h1>Welcome, {$userStore.user.email.split("@")[0]}</h1>
+    <h1 class="capitalize">Welcome, {$userStore.user.username}</h1>
     <a
       href="https://chriscancodecms.up.railway.app/"
       target="_blank"
@@ -30,10 +30,6 @@
 {/if}
 
 <style>
-  h1 {
-    text-transform: capitalize;
-  }
-
   .control-panel {
     top: 0;
     position: sticky;
