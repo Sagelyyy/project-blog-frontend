@@ -66,7 +66,7 @@
             <h1>{item.title}</h1>
             <h2>{item.user.username}</h2>
             <div class="separator" />
-            <p>{item.text}</p>
+            <p>{@html item.text}</p>
             <div class="footer">
               <p>Posted at {item.date}</p>
               <div>
