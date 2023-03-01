@@ -1,8 +1,6 @@
 <script>
   import { blur } from "svelte/transition";
-  import { createEventDispatcher } from "svelte";
-
-  const dispatch = createEventDispatcher();
+  import Delete from "./Delete.svelte";
 
   let comments;
   let currentBlog;
@@ -37,28 +35,6 @@
     }
   }
 
-  // TODO: Handle comment deletion
-  async function handleDelete(id) {
-    try {
-      const res = await fetch(
-        `https://project-blog-production.up.railway.app/api/comments/${id}`,
-        {
-          method: "DELETE",
-          withCredentials: true,
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id,
-          }),
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   setComments(id);
 </script>
 
@@ -81,6 +57,7 @@
         {/if}
         <p>{item.text}</p>
         <div class="separator" />
+        <Delete itemID={item._id} routeID={"comments"}/>
       {/each}
     {/await}
   </div>
