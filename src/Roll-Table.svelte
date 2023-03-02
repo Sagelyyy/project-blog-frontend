@@ -34,12 +34,72 @@
         display: none;
     }
 }
-.container{
-        position: fixed;
-        top: 0;
-        right: 0;
-        background-color: var(--accent);
-        padding: 20px;
-        height:100%
-    }
+.container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: var(--accent);
+  padding: 20px;
+  height: 100%;
+  padding-top: 150px;
+  color: white;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+li:before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+}
+
+li:first-child:before {
+  background-color: var(--accent);
+}
+
+li:last-child {
+  font-weight: bold;
+}
+
+li:last-child:before {
+  background-color: var(--accent);
+  content: '🎉';
+  font-size: 1.5em;
+  line-height: 1.2em;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+}
+
   </style>

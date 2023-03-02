@@ -20,7 +20,7 @@
         <a href="/">Home</a>
       </Router>
     </div>
-    <button on:click={toggleModal}>Show Dice</button>
+    <button on:click={toggleModal}>Toggle Dice</button>
   </div>
 {:else}
   <div class="control-panel">
@@ -30,7 +30,7 @@
         <a href="/">Home</a>
       </Router>
     </div>
-    <button on:click={toggleModal}>Show Dice</button>
+    <button on:click={toggleModal}>Toggle Dice</button>
   </div>
 {/if}
 <RollTable bind:toggleModal={toggleModal}/>
