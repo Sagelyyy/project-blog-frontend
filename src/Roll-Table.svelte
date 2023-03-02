@@ -1,5 +1,5 @@
 <script>
-    import { fade } from "svelte/transition";
+    import { fade, fly } from "svelte/transition";
     
     let showModal = false
 
@@ -10,7 +10,7 @@
 </script>
 
 {#if showModal}
-<div transition:fade class="container">
+<div in:fly="{{x: 100, duration: 0.5}}" out:fade class="container">
     <h3 class="text-basic">Decision making table:</h3>
     <ul>
       <li>1: Do something incredibly stupid</li>
@@ -34,6 +34,7 @@
         display: none;
     }
 }
+
 .container {
   position: fixed;
   top: 0;
@@ -42,7 +43,8 @@
   padding: 20px;
   height: 100%;
   padding-top: 150px;
-  color: white;
+  font-family: 'Arial', sans-serif;
+  color: var(--dark);
   text-align: center;
 }
 
@@ -76,7 +78,7 @@ li:before {
   left: -30px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: white;
+  background-color: var(--primary-bg);
 }
 
 li:first-child:before {
@@ -97,9 +99,34 @@ li:last-child:before {
   height: 40px;
   left: -40px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(1);
   color: white;
   font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+
+}
+
+li:last-child:hover::before {
+  transform: translateY(-50%) scale(3);
+  animation: wiggle 0.3s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: translateY(-50%) scale(1.5) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-50%) scale(1.5) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-50%) scale(1.5) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-50%) scale(1.5) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(-50%) scale(1.5) rotate(0deg);
+  }
 }
 
   </style>
