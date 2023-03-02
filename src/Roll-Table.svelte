@@ -1,9 +1,15 @@
 <script>
     import { fade } from "svelte/transition";
-    export let rollModal
+    
+    let showModal = false
+
+    export const toggleModal = () => {
+      showModal = !showModal
+    }
+
 </script>
 
-{#if rollModal}
+{#if showModal}
 <div transition:fade class="container">
     <h3 class="text-basic">Decision making table:</h3>
     <ul>
@@ -23,17 +29,17 @@
 
   <style>
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1500px) {
     .container{
         display: none;
     }
 }
-    .container{
+.container{
         position: fixed;
-        top: 8rem;
-        right: 2rem;
+        top: 0;
+        right: 0;
         background-color: var(--accent);
         padding: 20px;
-        border-radius: 10px;
+        height:100%
     }
   </style>

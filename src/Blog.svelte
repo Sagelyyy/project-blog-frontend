@@ -1,8 +1,6 @@
 <script>
   import { userStore } from "./store";
-
   import { link } from "svelte-routing";
-  import RollTable from "./Roll-Table.svelte";
 
   async function getBlogs() {
     try {
@@ -101,8 +99,6 @@
     {/each}
   {/await}
 </div>
-
-<RollTable rollModal={true}/>
 
 <style>
   a:link,

@@ -2,6 +2,9 @@
   import { userStore } from "./store";
   import Login from "./Login.svelte";
   import { links, Router } from "svelte-routing";
+  import RollTable from "./Roll-Table.svelte";
+
+  let toggleModal
 </script>
 
 {#if $userStore}
@@ -17,6 +20,7 @@
         <a href="/">Home</a>
       </Router>
     </div>
+    <button on:click={toggleModal}>Show Dice</button>
   </div>
 {:else}
   <div class="control-panel">
@@ -26,8 +30,10 @@
         <a href="/">Home</a>
       </Router>
     </div>
+    <button on:click={toggleModal}>Show Dice</button>
   </div>
 {/if}
+<RollTable bind:toggleModal={toggleModal}/>
 
 <style>
   .control-panel {
