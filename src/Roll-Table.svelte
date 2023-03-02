@@ -10,7 +10,7 @@
 </script>
 
 {#if showModal}
-<div in:fly="{{x: 100, duration: 0.5}}" out:fade class="container">
+<div in:fly="{{x: 100, duration: 2000}}" out:fade class="container">
     <h3 class="text-basic">Decision making table:</h3>
     <ul>
       <li>1: Do something incredibly stupid</li>
