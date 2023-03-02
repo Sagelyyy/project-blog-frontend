@@ -46,6 +46,7 @@
   font-family: 'Arial', sans-serif;
   color: var(--dark);
   text-align: center;
+  z-index: -1;
 }
 
 h3 {
@@ -79,10 +80,36 @@ li:before {
   top: 50%;
   transform: translateY(-50%);
   background-color: var(--primary-bg);
+  transition: all 0.4s;
+}
+
+li:hover:before {
+  background-color: var(--accent);
+  border: 1px solid black;
 }
 
 li:first-child:before {
   background-color: var(--accent);
+  content: '💀';
+  font-size: 1.5em;
+  line-height: 1.2em;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%) scale(1);
+  color: white;
+  font-weight: bold;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+li:first-child:hover::before {
+  transform: translateY(-50%) scale(3);
+  animation: wiggle 0.3s ease-in-out infinite;
+  background-color: var(--error);
+  border: none;
 }
 
 li:last-child {
@@ -102,13 +129,16 @@ li:last-child:before {
   transform: translateY(-50%) scale(1);
   color: white;
   font-weight: bold;
-  transition: transform 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
 
 }
 
 li:last-child:hover::before {
   transform: translateY(-50%) scale(3);
   animation: wiggle 0.3s ease-in-out infinite;
+  background-color: gold;
+  border: none;
 }
 
 @keyframes wiggle {
