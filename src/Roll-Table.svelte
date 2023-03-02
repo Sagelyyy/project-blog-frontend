@@ -37,16 +37,14 @@
 
 .container {
   position: fixed;
-  top: 0;
+  top: 153px;
   right: 0;
   background-color: var(--accent);
   padding: 20px;
-  height: 100%;
-  padding-top: 150px;
+  height: 500px;
   font-family: 'Arial', sans-serif;
   color: var(--dark);
   text-align: center;
-  z-index: -1;
 }
 
 h3 {
