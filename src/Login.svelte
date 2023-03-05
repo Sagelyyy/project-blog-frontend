@@ -52,6 +52,7 @@
     position: fixed;
     top: 30%;
     left: 5%;
+    background-color: var(--accent);
   }
 
   .login-container,
