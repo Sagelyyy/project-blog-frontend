@@ -2,8 +2,10 @@
   import { Router, Route } from "svelte-routing";
   import Blog from "./Blog.svelte";
   import Dstar from "./Dstar.svelte";
+  import Login from "./Login.svelte";
   import Navigation from "./Navigation.svelte";
   import PostDetail from "./Post_Detail.svelte";
+  import { userStore } from "./store";
 
   export let url = "";
 </script>
@@ -23,6 +25,9 @@
 </svelte:head>
 <Dstar />
 <Navigation />
+{#if !$userStore}
+  <Login />
+{/if}
 <Router {url}>
   <div>
     <Route path="blog/:id" let:params><PostDetail id={params.id} /></Route>

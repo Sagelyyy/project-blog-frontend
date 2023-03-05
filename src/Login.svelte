@@ -48,8 +48,15 @@
 </div>
 
 <style>
+  .login-container {
+    position: fixed;
+    top: 30%;
+    left: 5%;
+  }
+
   .login-container,
   form {
+    padding: 10px;
     display: flex;
     flex-direction: column;
   }

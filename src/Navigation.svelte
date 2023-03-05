@@ -12,8 +12,6 @@
   <div>
     {#if $userStore}
       <h2 class="capitalize">Welcome, {$userStore.user.username}</h2>
-    {:else}
-      <Login />
     {/if}
     <nav use:links>
       <Router>
