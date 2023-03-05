@@ -8,7 +8,7 @@
 </script>
 
 <div class="control-panel">
-  <h1>LotJ Fates</h1>
+  <h1>LoTJ Fates</h1>
   <div>
     {#if $userStore}
       <h2 class="capitalize">Welcome, {$userStore.user.username}</h2>
@@ -48,11 +48,16 @@
     flex-direction: column;
     max-width: 350px;
     flex-grow: 2;
+    margin-top: auto;
   }
 
   .control-panel > div > nav {
     display: flex;
     justify-content: space-around;
+  }
+
+  .control-panel > h1 {
+    margin-top: auto;
   }
 
   a {
