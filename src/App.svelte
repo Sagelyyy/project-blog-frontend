@@ -7,8 +7,9 @@
 
   export let url = "";
 </script>
+
 <svelte:head>
-  <title>LotJ Dice Roll</title>
+  <title>LotJ Fates</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -30,11 +31,8 @@
 </Router>
 
 <style>
-
-
-  @media screen and (max-width: 800px) {  
-
-    :global(.card){
+  @media screen and (max-width: 800px) {
+    :global(.card) {
       grid-template-rows: 177px 1fr;
       grid-template-columns: none !important;
     }
@@ -176,7 +174,7 @@
     display: flex !important;
   }
 
-  :global(.capitalize){
+  :global(.capitalize) {
     text-transform: capitalize;
   }
 </style>
