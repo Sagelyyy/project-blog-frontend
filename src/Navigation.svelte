@@ -1,6 +1,5 @@
 <script>
   import { userStore } from "./store";
-  import Login from "./Login.svelte";
   import { links, Router } from "svelte-routing";
   import RollTable from "./Roll-Table.svelte";
 
@@ -20,10 +19,10 @@
           <a
             href="https://chriscancodecms.up.railway.app/"
             target="_blank"
-            rel="noreferrer">Go to Dashboard</a
+            rel="noreferrer">Dashboard</a
           >
         {/if}
-        <p on:click={toggleModal}>Toggle Roll Table</p>
+        <p on:click={toggleModal}>Roll Table</p>
       </Router>
     </nav>
   </div>
